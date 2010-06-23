@@ -1,5 +1,7 @@
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from config import *
+from model import *
 
 # postgresql
 #pg_db = create_engine('postgresql://scott:tiger@localhost/mydatabase')
@@ -14,3 +16,11 @@ from config import *
 mysql = 'mysql://%s:%s@%s/%s' % (DB_USER, DB_PASS, DB_HOST, DB_NAME) 
 
 engine = create_engine(mysql)
+Session = sessionmaker(bind=engine)
+
+
+if __name__ == '__main__':
+    session = Session()
+    for item in session.query(Product).order_by(Product.id)[:10]:
+        print item.title, ', ', item.description
+
