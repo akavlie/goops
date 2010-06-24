@@ -1,0 +1,18 @@
+# Database info
+DB_USER = ''
+DB_PASS = ''
+DB_NAME = ''
+DB_HOST = ''
+DB_PORT = ''
+
+# Table & field names
+TABLE = ''
+TITLE_FIELD = ''
+DESC_FIELD = ''
+# PRICE_FIELD = ''
+CONDITION_FIELD = ''
+
+LINK = ''
+IMAGE_LINK = ''
+
+
