@@ -19,8 +19,14 @@ engine = create_engine(mysql)
 Session = sessionmaker(bind=engine)
 
 
+# For testing -- to remove
 if __name__ == '__main__':
     session = Session()
     for item in session.query(Product).order_by(Product.id)[:10]:
         print item.title, ', ', item.description
+        print 'Max Bid: ',
+        print max(item.bids).amount
+        #for bid in item.bids:
+            #    print bid.amount ,
+            
 

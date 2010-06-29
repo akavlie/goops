@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
+<channel>
+
+    <title>The name of your data feed</title>
+    <link>http://www.example.com</link>
+    <description>A description of your content</description>
+
+    % for item in data:
+    <item>
+        <title>${item.title}</title>
+        <link>${item.link}</link>
+        <description>${item.description}</description>
+        <g:image_link>${item.image_link}</g:image_link>
+        <g:price>${item.price}</g:price>
+        <g:condition>${item.condition}</g:condition>
+        <g:id>${item.id}</g:id>
+    </item>
+    % endfor
+
+</channel>
+</rss>
