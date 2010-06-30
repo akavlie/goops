@@ -12,11 +12,13 @@ class Product(Base):
     description = Column(DESC_FIELD, String)
     bids = relationship('Bid', order_by='Bid.id', backref='product')
 
-    def link(self, link=ITEM_LINK):
+    def _get_link(self, link=SITE+ITEM_PATH):
+        return link % self.id
+    def _get_image_link(self, link=SITE+IMAGE_PATH):
         return link % self.id
 
-    def image_link(self, link=IMAGE_LINK):
-        return link % self.id
+    link = property(_get_link)
+    image_link = property(_get_image_link)
 
     def __repr__(self):
         return "<Product('%s')>" % self.title

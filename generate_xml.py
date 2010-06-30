@@ -5,7 +5,7 @@ from model import *
 
 def generate_template(products):
     template = Template(filename='template.xml')
-    print template.render(data=products, link=ITEM_LINK)
+    print template.render(data=products)
 
 if __name__ == '__main__':
     session = Session()
