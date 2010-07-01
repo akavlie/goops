@@ -1,5 +1,5 @@
 from sqlalchemy import * 
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, validates
 from sqlalchemy.ext.declarative import declarative_base
 from config import *
 
@@ -9,7 +9,7 @@ class Product(Base):
     __tablename__ = TABLE
     id = Column(Integer, primary_key=True)
     title = Column(TITLE_FIELD, String)
-    description = Column(DESC_FIELD, String)
+    raw_description = Column(DESC_FIELD, String)
     status = Column('status', String)
     start_date = Column('start_date', DateTime)
     end_date = Column('end_date', DateTime)
@@ -19,14 +19,16 @@ class Product(Base):
         return link % self.id
     def _get_image_link(self, link=SITE+IMAGE_PATH):
         return link % self.id
-
     def _get_price(self):
         return max(self.bids).amount
+    def _get_clean_description(self):
+        return self.raw_description.replace(r'\"', '"')
 
     condition = CONDITION
     link = property(_get_link)
     image_link = property(_get_image_link)
     price = property(_get_price)
+    description = property(_get_clean_description)
 
     def __repr__(self):
         return "<Product('%s')>" % self.title
