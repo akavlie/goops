@@ -12,8 +12,8 @@
         <link>${item.link}</link>
         <description>${item.description}</description>
         <g:image_link>${item.image_link}</g:image_link>
-##        <g:price>${item.price}</g:price>
-##        <g:condition>${item.condition}</g:condition>
+        <g:price>${item.price}</g:price>
+        <g:condition>${item.condition}</g:condition>
         <g:id>${item.id}</g:id>
     </item>
     % endfor
