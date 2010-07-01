@@ -14,14 +14,20 @@ if __name__ == '__main__':
                       .filter_by(status='pending') \
                       .filter(Product.start_date < datetime.now()) \
                       .filter(Product.end_date > datetime.now()) \
-                      .order_by(Product.id)[:10]
+                      .order_by(Product.id)
     xml = generate_template(products)
 
-    if os.path.exists(XML_FILENAME):
+    xml_path = 'feed/' + XML_FILENAME 
+    if os.path.exists(xml_path):
         today = date.today()
-        date_string = str(today.month) + '-' + str(today.day)
-        new_name = 'feed/product_search-' + date_string + '.xml'
-        os.rename('feed/product_search.xml', new_name)
+        date_string = '_' + str(today.month) + '-' + str(today.day)
+        new_name = xml_path.split('.')[0] + date_string + '.xml'
+        os.rename(xml_path, new_name)
 
-    file = open(XML_FILENAME, 'w')
+    try:
+        file = open(xml_path, 'w')
+    except IOError:
+        if not os.path.exists('feed'):
+            os.mkdir('feed')
+            file = open(xml_path, 'w')
     file.write(xml)
