@@ -30,7 +30,7 @@ class Product(Base):
     def _get_price(self):
         return max(self.bids).amount
     def _get_clean_description(self):
-        return self._raw_description
+        return _strip_clean(self._raw_description)
     def _get_clean_title(self):
         return _strip_clean(self._raw_title)
 
