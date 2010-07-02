@@ -8,7 +8,8 @@ def _strip_clean(text):
     """Strips slashes & html from text. """
     text = text.replace(r'\"', '"') \
                .replace(r"\'", "'") \
-               .replace(r'&nbsp;', '')
+               .replace(r'&nbsp;', '') \
+               .replace('&', '&amp;')
     return re.sub(r'<[^>]*?>', '', text)
 
 Base = declarative_base()
