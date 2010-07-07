@@ -6,7 +6,8 @@ from model import *
 from logger import log
 
 def generate_template(products):
-    template = Template(filename='template.xml')
+    template = Template(filename=os.path.join(os.path.dirname(__file__),
+                                              'template.xml'))
     return template.render(data=products)
 
 if __name__ == '__main__':
@@ -20,7 +21,7 @@ if __name__ == '__main__':
     log.info('Generated feed of %s items to %s' % (products.count(),
                                                    XML_FILENAME))
 
-    xml_path = 'feed/' + XML_FILENAME 
+    xml_path = os.path.join(os.path.dirname(__file__), 'feed/') + XML_FILENAME 
     if os.path.exists(xml_path):
         today = date.today()
         date_string = '_' + str(today.month) + '-' + str(today.day)
