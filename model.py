@@ -20,6 +20,7 @@ class Product(Base):
     status = Column('status', String)
     start_date = Column('start_date', DateTime)
     end_date = Column('end_date', DateTime)
+    premium = Column('buyer_prem', Float)
     _raw_title = Column(TITLE_FIELD, String)
     _raw_description = Column(DESC_FIELD, String)
     bids = relationship('Bid', order_by='Bid.id', backref='product')
@@ -29,7 +30,9 @@ class Product(Base):
     def _get_image_link(self, link=SITE+IMAGE_PATH):
         return link % self.id
     def _get_price(self):
-        return max(self.bids).amount
+        price = max(self.bids).amount
+        premium = round((price * self.premium), 2)
+        return '%.2f' % (price + premium)
     def _get_clean_description(self):
         return _strip_clean(self._raw_description)
     def _get_clean_title(self):
