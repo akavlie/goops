@@ -3,6 +3,7 @@ from datetime import date, datetime
 from mako.template import Template
 from connect import Session
 from model import *
+from logger import log
 
 def generate_template(products):
     template = Template(filename='template.xml')
@@ -16,6 +17,8 @@ if __name__ == '__main__':
                       .filter(Product.end_date > datetime.now()) \
                       .order_by(Product.id)
     xml = generate_template(products)
+    log.info('Generated feed of %s items to %s' % (products.count(),
+                                                   XML_FILENAME))
 
     xml_path = 'feed/' + XML_FILENAME 
     if os.path.exists(xml_path):
