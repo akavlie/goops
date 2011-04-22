@@ -41,7 +41,8 @@ to work with other DBs (see `connect.py`).
 \* I assigned variables in an attempt to make the model work across multiple
 database setups, but in hindsight this was a bit naive. SQL database structures
 will be diverse enough that the model will probably need significant
-modification to work for you. If you have some level of comfort working with
-SQLAlchemy (or are willing to learn), it may be of value to you.
-   
+modification to work with your database. If you have some level of comfort working with
+SQLAlchemy (or are willing to learn), it may be of value to you -- as example
+code, if nothing else. Pull requests or input that help make it work with 
+other database layouts would be appreciated.
 
