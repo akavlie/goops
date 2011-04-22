@@ -1,4 +1,5 @@
-# GOOPS a Google Product Search data feed generator
+# GOOPS
+**a Google Product Search data feed generator**
 
 Google Product Search allows online retailers to submit a data feed of their
 product catalogs. While it's possible to manually create a spreadsheet of
@@ -32,7 +33,7 @@ to work with other DBs (see `connect.py`).
 1. Add a line to your crontab to generate the XML file on a daily basis.  For
    example, to generate every day at 2:00 AM:
 
-    00 2    * * *   python /path/to/goops/generate_xml.py
+    `00 2    * * *   python /path/to/goops/generate_xml.py`
 
 1. Point Google to the resulting XML feed.
 
