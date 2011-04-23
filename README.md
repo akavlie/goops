@@ -46,3 +46,6 @@ SQLAlchemy (or are willing to learn), it may be of value to you -- as example
 code, if nothing else. Pull requests or input that help make it work with 
 other database layouts would be appreciated.
 
+## License
+
+Goops is BSD licensed. You can do (almost) anything you want with it.
